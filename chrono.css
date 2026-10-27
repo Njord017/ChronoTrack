@@ -1,599 +1,569 @@
-:root {
-    color-scheme: light;
-    --page: #f3f6fa;
-    --surface: #ffffff;
-    --text: #182230;
-    --muted: #657386;
-    --border: #e2e8f0;
-    --primary: #176b54;
-    --primary-hover: #115441;
-    --danger: #b83c4a;
-    --danger-hover: #982e3a;
-    --accent: #e9f5f0;
-    --shadow: 0 12px 35px rgba(28, 45, 66, 0.07);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: var(--page);
-    color: var(--text);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-button,
-input {
-    font: inherit;
-}
-
-button {
-    -webkit-tap-highlight-color: transparent;
-}
-
-.site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 20px max(24px, calc((100% - 1160px) / 2));
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-}
-
-.brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text);
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    text-decoration: none;
-}
-
-.brand-icon {
-    display: grid;
-    width: 36px;
-    height: 36px;
-    place-items: center;
-    border-radius: 11px;
-    background: var(--primary);
-    color: white;
-    font-size: 1.5rem;
-}
-
-.header-note {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.9rem;
-}
-
-.page-shell {
-    width: min(1160px, calc(100% - 40px));
-    margin: 0 auto;
-}
-
-.intro {
-    padding: 42px 0 28px;
-}
-
-.eyebrow {
-    margin: 0 0 8px;
-    color: var(--primary);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.13em;
-}
-
-.intro h1 {
-    margin: 0;
-    font-size: clamp(2rem, 5vw, 3rem);
-    letter-spacing: -0.055em;
-    line-height: 1.1;
-}
-
-.intro-copy {
-    margin: 12px 0 0;
-    color: var(--muted);
-    font-size: 1.02rem;
-    line-height: 1.6;
-}
-
-.timer-grid,
-.stats-grid,
-.dashboard-grid {
-    display: grid;
-    gap: 20px;
-}
-
-.timer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.panel,
-.stat-card {
-    min-width: 0;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background: var(--surface);
-    box-shadow: var(--shadow);
-}
-
-.panel {
-    padding: 25px;
-}
-
-.panel-heading,
-.section-heading {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-}
-
-.panel-heading h2,
-.section-heading h2 {
-    margin: 0;
-    font-size: 1.35rem;
-    letter-spacing: -0.035em;
-}
-
-.panel-icon {
-    display: grid;
-    width: 42px;
-    height: 42px;
-    flex: 0 0 auto;
-    place-items: center;
-    border-radius: 13px;
-    background: var(--accent);
-    color: var(--primary);
-    font-size: 1.35rem;
-}
-
-.field-label {
-    display: block;
-    margin: 22px 0 8px;
-    color: #344255;
-    font-size: 0.86rem;
-    font-weight: 700;
-}
-
-.text-input {
-    display: block;
-    width: 100%;
-    min-height: 44px;
-    padding: 10px 13px;
-    border: 1px solid #d7e0e9;
-    border-radius: 10px;
-    outline: none;
-    background: #fbfcfe;
-    color: var(--text);
-    transition: border-color 150ms ease, box-shadow 150ms ease;
-}
-
-.text-input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(23, 107, 84, 0.12);
-}
-
-.time-display {
-    margin: 26px 0 22px;
-    color: #263548;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: clamp(2.25rem, 5vw, 3.65rem);
-    font-weight: 750;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.075em;
-    text-align: center;
-    white-space: nowrap;
-}
-
-.focus-time {
-    color: var(--primary);
-    font-size: clamp(3rem, 6vw, 4.3rem);
-    margin-top: 20px;
-}
-
-.button-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-}
-
-.button {
-    min-height: 43px;
-    padding: 10px 16px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 750;
-    transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
-}
-
-.button:hover,
-.preset-button:hover,
-.text-button:hover {
-    transform: translateY(-1px);
-}
-
-.button:focus-visible,
-.preset-button:focus-visible,
-.text-button:focus-visible,
-.delete-session:focus-visible {
-    outline: 3px solid rgba(23, 107, 84, 0.28);
-    outline-offset: 2px;
-}
-
-.button-primary {
-    background: var(--primary);
-    color: #fff;
-}
-
-.button-primary:hover {
-    background: var(--primary-hover);
-}
-
-.button-danger {
-    background: var(--danger);
-    color: #fff;
-}
-
-.button-danger:hover {
-    background: var(--danger-hover);
-}
-
-.button-neutral {
-    border-color: var(--border);
-    background: #f7f9fc;
-    color: #344255;
-}
-
-.button-neutral:hover {
-    background: #edf1f6;
-}
-
-.button-save {
-    margin-top: 10px;
-    background: #e8f4ed;
-    color: #176b54;
-}
-
-.button-save:hover {
-    background: #d7ecdf;
-}
-
-.full-width {
-    width: 100%;
-}
-
-.helper-text,
-.stat-footnote {
-    color: var(--muted);
-    font-size: 0.79rem;
-    line-height: 1.5;
-}
-
-.helper-text {
-    margin: 11px 0 0;
-}
-
-.status-message {
-    min-height: 1.1em;
-    margin: 9px 0 0;
-    color: var(--primary);
-    font-size: 0.82rem;
-}
-
-.preset-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-}
-
-.preset-button {
-    padding: 8px 11px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: #fff;
-    color: #475569;
-    cursor: pointer;
-    font-size: 0.78rem;
-    font-weight: 700;
-}
-
-.preset-button.active {
-    border-color: #b5d8c8;
-    background: var(--accent);
-    color: var(--primary);
-}
-
-.custom-duration .field-label {
-    margin-top: 17px;
-}
-
-.small-input {
-    max-width: 180px;
-}
-
-.dashboard-section {
-    padding-top: 48px;
-}
-
-.section-heading {
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.local-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 7px 10px;
-    border-radius: 999px;
-    background: #e8f4ed;
-    color: #176b54;
-    font-size: 0.75rem;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-.stats-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.stat-card {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    padding: 21px;
-}
-
-.stat-label {
-    color: var(--muted);
-    font-size: 0.85rem;
-    font-weight: 650;
-}
-
-.stat-value {
-    font-size: clamp(1.65rem, 3vw, 2.25rem);
-    letter-spacing: -0.06em;
-    line-height: 1.15;
-    overflow-wrap: anywhere;
-}
-
-.stat-footnote {
-    margin-top: auto;
-}
-
-.dashboard-grid {
-    grid-template-columns: 0.9fr 1.1fr;
-    margin-top: 20px;
-    align-items: start;
-}
-
-.compact-heading {
-    align-items: center;
-}
-
-.compact-heading h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    letter-spacing: -0.025em;
-}
-
-.text-button {
-    padding: 7px 9px;
-    border: 0;
-    border-radius: 8px;
-    background: transparent;
-    color: var(--danger);
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 750;
-}
-
-.weekly-chart {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 10px;
-    min-height: 185px;
-    align-items: end;
-    margin-top: 24px;
-}
-
-.chart-day {
-    display: flex;
-    min-width: 0;
-    height: 170px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-}
-
-.chart-bar-track {
-    display: flex;
-    width: 100%;
-    max-width: 32px;
-    height: 125px;
-    align-items: flex-end;
-    overflow: hidden;
-    border-radius: 7px;
-    background: #edf2f6;
-}
-
-.chart-bar {
-    width: 100%;
-    min-height: 3px;
-    border-radius: 7px;
-    background: #32856c;
-    transition: height 180ms ease;
-}
-
-.chart-minutes {
-    color: #475569;
-    font-size: 0.7rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-}
-
-.chart-label {
-    color: var(--muted);
-    font-size: 0.72rem;
-}
-
-.session-history {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 15px;
-}
-
-.history-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 13px 0;
-    border-bottom: 1px solid #edf1f5;
-}
-
-.history-item:last-child {
-    border-bottom: 0;
-}
-
-.history-main {
-    min-width: 0;
-}
-
-.history-name {
-    margin: 0;
-    overflow-wrap: anywhere;
-    font-size: 0.9rem;
-    font-weight: 750;
-}
-
-.history-meta {
-    margin: 5px 0 0;
-    color: var(--muted);
-    font-size: 0.74rem;
-    line-height: 1.5;
-}
-
-.history-right {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    gap: 9px;
-}
-
-.history-duration {
-    font-size: 0.85rem;
-    font-weight: 800;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-}
-
-.delete-session {
-    display: grid;
-    width: 29px;
-    height: 29px;
-    place-items: center;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: #fff;
-    color: var(--danger);
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.empty-state {
-    grid-column: 1 / -1;
-    margin: 0;
-    padding: 18px 0;
-    color: var(--muted);
-    font-size: 0.85rem;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.site-footer {
-    padding: 30px 0 38px;
-    color: var(--muted);
-    font-size: 0.78rem;
-    text-align: center;
-}
-
-.site-footer p {
-    margin: 0;
-}
-
-@media (max-width: 850px) {
-    .timer-grid,
-    .dashboard-grid {
-        grid-template-columns: 1fr;
+// ChronoTrack: stopwatch, saved sessions, productivity dashboard, and focus countdown.
+
+ 
+// ---------- Theme (light / dark) ----------
+// The tiny script in <head> already set data-theme before the page painted.
+// This part keeps the toggle in sync, saves the choice, and follows the system setting until you pick one.
+const THEME_KEY = "chronotrack-theme";
+const themeToggle = document.getElementById("theme-toggle");
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+const systemDarkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+ 
+function getSavedTheme() {
+    try {
+        const saved = localStorage.getItem(THEME_KEY);
+        return saved === "light" || saved === "dark" ? saved : null;
+    } catch (error) {
+        return null; // Storage can be blocked (private mode); the toggle still works for this visit.
     }
+}
+ 
+function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    themeToggle.setAttribute("aria-checked", String(theme === "dark"));
+    // Colors the browser bar on phones to match the page.
+    if (themeColorMeta) themeColorMeta.setAttribute("content", theme === "dark" ? "#161e29" : "#ffffff");
+}
+ 
+applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
+ 
+themeToggle.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(next);
+    try {
+        localStorage.setItem(THEME_KEY, next);
+    } catch (error) {
+        console.error("Could not save theme:", error);
+    }
+});
+ 
+// If you never chose a theme, follow the device setting when it changes.
+systemDarkQuery.addEventListener("change", event => {
+    if (!getSavedTheme()) applyTheme(event.matches ? "dark" : "light");
+});
 
-    .time-display {
-        font-size: clamp(2.5rem, 9vw, 3.8rem);
+// ---------- Shared saved data ----------
+// localStorage can only save strings, so we convert our session array to/from JSON.
+const STORAGE_KEY = "chronotrack-sessions-v1";
+const display = document.getElementById("display");
+const sessionNameInput = document.getElementById("sessionName");
+const stopwatchMessage = document.getElementById("stopwatchMessage");
+const focusMessage = document.getElementById("focusMessage");
+
+let sessions = loadSessions();
+
+function loadSessions() {
+    // A try/catch prevents malformed saved data from stopping the whole app.
+    try {
+        const savedData = localStorage.getItem(STORAGE_KEY);
+        const parsedData = savedData ? JSON.parse(savedData) : [];
+        return Array.isArray(parsedData) ? parsedData : [];
+    } catch (error) {
+        console.error("Could not load saved sessions:", error);
+        return [];
     }
 }
 
-@media (max-width: 560px) {
-    .site-header {
-        padding: 15px 20px;
+function saveSessionsToStorage() {
+    // JSON.stringify turns the array of session objects into a string for storage.
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(sessions));
+}
+
+function makeSession(name, durationMs, type) {
+    // Each session has the same shape, which makes summaries easier to calculate.
+    return {
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        name: name.trim() || (type === "focus" ? "Focus session" : "Stopwatch session"),
+        durationMs: Math.max(0, Math.round(durationMs)),
+        type,
+        createdAt: new Date().toISOString()
+    };
+}
+
+function addSession(session) {
+    sessions.unshift(session); // Put the newest session at the top of the history.
+    saveSessionsToStorage();
+    renderDashboard();
+}
+
+// ---------- Stopwatch ----------
+let stopwatchInterval = null;
+let stopwatchStartTime = 0;
+let elapsedTime = 0;
+let isStopwatchRunning = false;
+
+function startStopwatch() {
+    if (isStopwatchRunning) return; // Prevent starting multiple intervals.
+
+    stopwatchStartTime = Date.now() - elapsedTime;
+    stopwatchInterval = setInterval(updateStopwatch, 10);
+    isStopwatchRunning = true;
+    stopwatchMessage.textContent = "Stopwatch running.";
+}
+
+function stopStopwatch() {
+    if (!isStopwatchRunning) return;
+
+    clearInterval(stopwatchInterval);
+    elapsedTime = Date.now() - stopwatchStartTime;
+    isStopwatchRunning = false;
+    updateStopwatch();
+    stopwatchMessage.textContent = "Stopped. Save the session to add it to your history.";
+}
+
+function resetStopwatch() {
+    clearInterval(stopwatchInterval);
+    stopwatchInterval = null;
+    stopwatchStartTime = 0;
+    elapsedTime = 0;
+    isStopwatchRunning = false;
+    display.textContent = "00:00:00.00";
+    stopwatchMessage.textContent = "Stopwatch reset.";
+}
+
+function getStopwatchElapsed() {
+    // While running, calculate from the real clock rather than counting interval calls.
+    return isStopwatchRunning ? Date.now() - stopwatchStartTime : elapsedTime;
+}
+
+function updateStopwatch() {
+    elapsedTime = getStopwatchElapsed();
+    display.textContent = formatStopwatchTime(elapsedTime);
+}
+
+function formatStopwatchTime(milliseconds) {
+    const totalCentiseconds = Math.floor(milliseconds / 10);
+    const hours = Math.floor(totalCentiseconds / 360000);
+    const minutes = Math.floor(totalCentiseconds / 6000) % 60;
+    const seconds = Math.floor(totalCentiseconds / 100) % 60;
+    const centiseconds = totalCentiseconds % 100;
+
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(centiseconds).padStart(2, "0")}`;
+}
+
+document.getElementById("startBtn").addEventListener("click", startStopwatch);
+document.getElementById("stopBtn").addEventListener("click", stopStopwatch);
+document.getElementById("resetBtn").addEventListener("click", resetStopwatch);
+
+document.getElementById("saveSessionBtn").addEventListener("click", () => {
+    const duration = getStopwatchElapsed();
+
+    if (duration < 1000) {
+        stopwatchMessage.textContent = "Run the stopwatch for at least one second before saving.";
+        return;
     }
 
-    .header-note {
-        font-size: 0.78rem;
+    // Saving ends the current stopwatch session so it cannot be accidentally saved twice.
+    clearInterval(stopwatchInterval);
+    stopwatchInterval = null;
+    isStopwatchRunning = false;
+
+    addSession(makeSession(sessionNameInput.value, duration, "stopwatch"));
+    resetStopwatch();
+    stopwatchMessage.textContent = "Session saved to your history.";
+    sessionNameInput.value = "";
+});
+
+// ---------- Focus countdown ----------
+const focusDisplay = document.getElementById("focusDisplay");
+const focusMinutesInput = document.getElementById("focusMinutes");
+const focusNameInput = document.getElementById("focusName");
+const focusStartBtn = document.getElementById("focusStartBtn");
+
+let focusInterval = null;
+let focusRemainingMs = 25 * 60 * 1000;
+let focusEndTime = 0;
+let isFocusRunning = false;
+let selectedFocusMinutes = 25;
+
+function formatCountdown(milliseconds) {
+    const totalSeconds = Math.ceil(Math.max(0, milliseconds) / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function updateFocusDisplay() {
+    focusDisplay.textContent = formatCountdown(focusRemainingMs);
+}
+
+function setFocusDuration(minutes) {
+    if (isFocusRunning) return; // Do not change the target halfway through a running countdown.
+
+    const safeMinutes = Math.min(180, Math.max(1, Number(minutes) || 25));
+    selectedFocusMinutes = safeMinutes;
+    focusMinutesInput.value = String(safeMinutes);
+    focusRemainingMs = safeMinutes * 60 * 1000;
+    updateFocusDisplay();
+    focusMessage.textContent = "";
+}
+
+function startOrPauseFocus() {
+    if (isFocusRunning) {
+        // Pause by storing the remaining time, then stop the interval.
+        focusRemainingMs = Math.max(0, focusEndTime - Date.now());
+        clearInterval(focusInterval);
+        focusInterval = null;
+        isFocusRunning = false;
+        focusStartBtn.textContent = "Resume focus";
+        updateFocusDisplay();
+        focusMessage.textContent = "Focus timer paused.";
+        return;
     }
 
-    .page-shell {
-        width: min(100% - 28px, 1160px);
+    if (focusRemainingMs <= 0) {
+        setFocusDuration(focusMinutesInput.value);
     }
 
-    .intro {
-        padding-top: 32px;
-    }
+    focusEndTime = Date.now() + focusRemainingMs;
+    isFocusRunning = true;
+    focusStartBtn.textContent = "Pause focus";
+    focusMessage.textContent = "Focus session in progress.";
+    focusInterval = setInterval(tickFocusTimer, 200);
+    tickFocusTimer();
+}
 
-    .panel {
-        padding: 19px;
-        border-radius: 16px;
-    }
+function tickFocusTimer() {
+    focusRemainingMs = Math.max(0, focusEndTime - Date.now());
+    updateFocusDisplay();
 
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .stat-card {
-        padding: 17px;
-    }
-
-    .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .button-row .button {
-        flex: 1;
-        padding-inline: 11px;
-    }
-
-    .weekly-chart {
-        gap: 6px;
-    }
-
-    .history-item {
-        align-items: flex-start;
-    }
-
-    .history-right {
-        gap: 5px;
+    if (focusRemainingMs <= 0) {
+        completeFocusSession();
     }
 }
+
+function completeFocusSession() {
+    clearInterval(focusInterval);
+    focusInterval = null;
+    isFocusRunning = false;
+    focusStartBtn.textContent = "Start focus";
+
+    const duration = selectedFocusMinutes * 60 * 1000;
+    addSession(makeSession(focusNameInput.value, duration, "focus"));
+    focusMessage.textContent = "Focus complete! Your session was saved automatically.";
+    focusNameInput.value = "";
+    focusRemainingMs = 0;
+    updateFocusDisplay();
+
+    // Alert is a simple completion reminder; it does not require an extra library.
+    window.alert("Focus session complete! Take a short break.");
+}
+
+function resetFocusTimer() {
+    clearInterval(focusInterval);
+    focusInterval = null;
+    isFocusRunning = false;
+    focusStartBtn.textContent = "Start focus";
+    focusRemainingMs = selectedFocusMinutes * 60 * 1000;
+    updateFocusDisplay();
+    focusMessage.textContent = "Focus timer reset.";
+}
+
+focusStartBtn.addEventListener("click", startOrPauseFocus);
+document.getElementById("focusResetBtn").addEventListener("click", resetFocusTimer);
+focusMinutesInput.addEventListener("change", () => {
+    if (isFocusRunning) return;
+    setFocusDuration(focusMinutesInput.value);
+    document.querySelectorAll(".preset-button").forEach(button => button.classList.remove("active"));
+});
+
+document.querySelectorAll(".preset-button").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".preset-button").forEach(preset => preset.classList.remove("active"));
+        button.classList.add("active");
+        setFocusDuration(button.dataset.minutes);
+    });
+});
+
+// ---------- Saved timers (your own named timers, kept for next time) ----------
+const SAVED_TIMERS_KEY = "chronotrack-saved-timers-v1";
+const MAX_SAVED_TIMERS = 12;
+const savedTimersList = document.getElementById("savedTimers");
+const saveTimerBtn = document.getElementById("saveTimerBtn");
+ 
+let savedTimers = loadSavedTimers();
+ 
+function loadSavedTimers() {
+    try {
+        const raw = localStorage.getItem(SAVED_TIMERS_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        if (!Array.isArray(parsed)) return [];
+        // Keep only well-formed timers so bad saved data cannot break the page.
+        return parsed.filter(timer => timer && typeof timer.name === "string" && Number.isFinite(timer.minutes));
+    } catch (error) {
+        console.error("Could not load saved timers:", error);
+        return [];
+    }
+}
+ 
+function persistSavedTimers() {
+    try {
+        localStorage.setItem(SAVED_TIMERS_KEY, JSON.stringify(savedTimers));
+    } catch (error) {
+        console.error("Could not save timers:", error);
+    }
+}
+ 
+function renderSavedTimers() {
+    savedTimersList.replaceChildren();
+ 
+    if (savedTimers.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "saved-empty";
+        empty.textContent = "No saved timers yet.";
+        savedTimersList.append(empty);
+        return;
+    }
+ 
+    savedTimers.forEach(timer => {
+        const chip = document.createElement("div");
+        chip.className = "saved-timer";
+ 
+        const loadButton = document.createElement("button");
+        loadButton.className = "saved-timer-load";
+        loadButton.type = "button";
+        loadButton.textContent = `${timer.name} · ${timer.minutes} min`; // textContent keeps typed names safe.
+        loadButton.title = `Use "${timer.name}" (${timer.minutes} min)`;
+        loadButton.addEventListener("click", () => useSavedTimer(timer.id));
+ 
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "saved-timer-delete";
+        deleteButton.type = "button";
+        deleteButton.textContent = "×";
+        deleteButton.setAttribute("aria-label", `Delete saved timer ${timer.name}`);
+        deleteButton.addEventListener("click", () => deleteSavedTimer(timer.id));
+ 
+        chip.append(loadButton, deleteButton);
+        savedTimersList.append(chip);
+    });
+}
+ 
+function saveCurrentTimer() {
+    const name = focusNameInput.value.trim();
+    const minutes = Math.min(180, Math.max(1, Math.round(Number(focusMinutesInput.value) || 0)));
+ 
+    if (!name) {
+        focusMessage.textContent = "Type a name for your timer first.";
+        focusNameInput.focus();
+        return;
+    }
+ 
+    // Same name again? Update its minutes instead of making a duplicate.
+    const existing = savedTimers.find(timer => timer.name.toLowerCase() === name.toLowerCase());
+    if (existing) {
+        existing.minutes = minutes;
+        persistSavedTimers();
+        renderSavedTimers();
+        focusMessage.textContent = `Updated "${existing.name}" to ${minutes} min.`;
+        return;
+    }
+ 
+    if (savedTimers.length >= MAX_SAVED_TIMERS) {
+        focusMessage.textContent = `You can save up to ${MAX_SAVED_TIMERS} timers. Delete one to add another.`;
+        return;
+    }
+ 
+    savedTimers.push({
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        name,
+        minutes
+    });
+    persistSavedTimers();
+    renderSavedTimers();
+    focusMessage.textContent = `Saved "${name}" · ${minutes} min.`;
+}
+ 
+function useSavedTimer(timerId) {
+    const timer = savedTimers.find(item => item.id === timerId);
+    if (!timer) return;
+ 
+    if (isFocusRunning) {
+        focusMessage.textContent = "Pause or reset the current focus timer before switching.";
+        return;
+    }
+ 
+    focusNameInput.value = timer.name;
+    setFocusDuration(timer.minutes);
+    focusStartBtn.textContent = "Start focus";
+    document.querySelectorAll(".preset-button").forEach(button => button.classList.remove("active"));
+    focusMessage.textContent = `Ready: "${timer.name}" · ${timer.minutes} min. Press Start focus.`;
+}
+ 
+function deleteSavedTimer(timerId) {
+    const timer = savedTimers.find(item => item.id === timerId);
+    savedTimers = savedTimers.filter(item => item.id !== timerId);
+    persistSavedTimers();
+    renderSavedTimers();
+    if (timer) focusMessage.textContent = `Deleted "${timer.name}".`;
+}
+ 
+saveTimerBtn.addEventListener("click", saveCurrentTimer);
+ 
+
+// ---------- Productivity dashboard and session history ----------
+const totalFocusTime = document.getElementById("totalFocusTime");
+const totalSessions = document.getElementById("totalSessions");
+const todayFocusTime = document.getElementById("todayFocusTime");
+const weeklyChart = document.getElementById("weeklyChart");
+const sessionHistory = document.getElementById("sessionHistory");
+const historyMessage = document.getElementById("historyMessage");
+
+function formatDuration(milliseconds) {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    if (hours > 0) return `${hours}h ${minutes}m`;
+    if (minutes > 0) return `${minutes}m ${seconds}s`;
+    return `${seconds}s`;
+}
+
+function sameLocalDay(dateA, dateB) {
+    return dateA.getFullYear() === dateB.getFullYear()
+        && dateA.getMonth() === dateB.getMonth()
+        && dateA.getDate() === dateB.getDate();
+}
+
+function renderDashboard() {
+    // The dashboard is calculated from the saved sessions, so it stays in sync after changes.
+    const totalMs = sessions.reduce((sum, session) => sum + session.durationMs, 0);
+    const today = new Date();
+    const todayMs = sessions.reduce((sum, session) => {
+        return sameLocalDay(new Date(session.createdAt), today) ? sum + session.durationMs : sum;
+    }, 0);
+
+    totalFocusTime.textContent = formatLongDuration(totalMs);
+    totalSessions.textContent = String(sessions.length);
+    todayFocusTime.textContent = formatLongDuration(todayMs);
+    renderWeeklyChart();
+    renderSessionHistory();
+}
+
+function formatLongDuration(milliseconds) {
+    const totalMinutes = Math.floor(milliseconds / 60000);
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (hours > 0) return `${hours}h ${minutes}m`;
+    return `${totalMinutes} min`;
+}
+
+function getLastSevenDays() {
+    // Build local calendar dates from six days ago through today.
+    return Array.from({ length: 7 }, (_, index) => {
+        const date = new Date();
+        date.setHours(0, 0, 0, 0);
+        date.setDate(date.getDate() - (6 - index));
+        return date;
+    });
+}
+
+function renderWeeklyChart() {
+    const days = getLastSevenDays();
+    const dailyTotals = days.map(day => {
+        return sessions.reduce((sum, session) => {
+            return sameLocalDay(new Date(session.createdAt), day) ? sum + session.durationMs : sum;
+        }, 0);
+    });
+    const maxMinutes = Math.max(1, ...dailyTotals.map(total => total / 60000));
+
+    weeklyChart.replaceChildren();
+
+    days.forEach((day, index) => {
+        const minutes = Math.round(dailyTotals[index] / 60000);
+        const barHeight = minutes === 0 ? 3 : Math.max(5, (minutes / maxMinutes) * 100);
+        const dayColumn = document.createElement("div");
+        dayColumn.className = "chart-day";
+        dayColumn.title = `${day.toLocaleDateString()} — ${minutes} minutes`;
+
+        const minuteLabel = document.createElement("span");
+        minuteLabel.className = "chart-minutes";
+        minuteLabel.textContent = String(minutes);
+
+        const track = document.createElement("div");
+        track.className = "chart-bar-track";
+        const bar = document.createElement("div");
+        bar.className = "chart-bar";
+        bar.style.height = `${barHeight}%`;
+        track.append(bar);
+
+        const dayLabel = document.createElement("span");
+        dayLabel.className = "chart-label";
+        dayLabel.textContent = day.toLocaleDateString(undefined, { weekday: "short" });
+
+        dayColumn.append(minuteLabel, track, dayLabel);
+        weeklyChart.append(dayColumn);
+    });
+}
+
+function renderSessionHistory() {
+    sessionHistory.replaceChildren();
+
+    if (sessions.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.className = "empty-state";
+        emptyMessage.textContent = "No sessions saved yet. Complete a session to get started.";
+        sessionHistory.append(emptyMessage);
+        return;
+    }
+
+    // Show the latest 20 sessions to keep the page manageable.
+    sessions.slice(0, 20).forEach(session => {
+        const item = document.createElement("div");
+        item.className = "history-item";
+
+        const main = document.createElement("div");
+        main.className = "history-main";
+        const name = document.createElement("p");
+        name.className = "history-name";
+        name.textContent = session.name; // textContent safely displays user-entered text.
+        const meta = document.createElement("p");
+        meta.className = "history-meta";
+        const date = new Date(session.createdAt);
+        meta.textContent = `${session.type === "focus" ? "Focus timer" : "Stopwatch"} · ${date.toLocaleString()}`;
+        main.append(name, meta);
+
+        const right = document.createElement("div");
+        right.className = "history-right";
+        const duration = document.createElement("span");
+        duration.className = "history-duration";
+        duration.textContent = formatDuration(session.durationMs);
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "delete-session";
+        deleteButton.type = "button";
+        deleteButton.textContent = "×";
+        deleteButton.setAttribute("aria-label", `Delete session ${session.name}`);
+        deleteButton.addEventListener("click", () => deleteSession(session.id));
+        right.append(duration, deleteButton);
+
+        item.append(main, right);
+        sessionHistory.append(item);
+    });
+}
+
+function deleteSession(sessionId) {
+    sessions = sessions.filter(session => session.id !== sessionId);
+    saveSessionsToStorage();
+    renderDashboard();
+    historyMessage.textContent = "Session deleted.";
+}
+
+document.getElementById("clearHistoryBtn").addEventListener("click", () => {
+    if (sessions.length === 0) {
+        historyMessage.textContent = "There is no history to clear.";
+        return;
+    }
+
+    if (window.confirm("Delete all saved sessions? This cannot be undone.")) {
+        sessions = [];
+        saveSessionsToStorage();
+        renderDashboard();
+        historyMessage.textContent = "All session history cleared.";
+    }
+});
+
+// Draw saved records as soon as the page opens.
+renderDashboard();
+updateStopwatch();
+updateFocusDisplay();
+
